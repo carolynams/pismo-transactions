@@ -2,11 +2,9 @@ package io.pismo.transactions.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
 import java.util.UUID;
 
 @Data
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

@@ -2,7 +2,6 @@ package io.pismo.transactions.interfaces.adapter.controller;
 
 import io.pismo.transactions.interfaces.adapter.controller.model.transaction.TransactionRequest;
 import io.pismo.transactions.interfaces.adapter.controller.model.transaction.TransactionResponse;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +17,6 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @Validated
-@Api(value = "TransactionController", tags = "TransactionController")
 public interface TransactionController {
 
     @PostMapping

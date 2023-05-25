@@ -4,7 +4,6 @@ import io.pismo.transactions.interfaces.adapter.controller.model.account.createa
 import io.pismo.transactions.interfaces.adapter.controller.model.account.createaccount.CreateAccountResponse;
 import io.pismo.transactions.interfaces.adapter.controller.model.account.findaccount.FindAccountResponse;
 import io.pismo.transactions.interfaces.adapter.controller.model.transaction.TransactionResponse;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +17,6 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @Validated
-@Api(value = "AccountController", tags = "AccountController")
 public interface AccountController {
 
     @PostMapping

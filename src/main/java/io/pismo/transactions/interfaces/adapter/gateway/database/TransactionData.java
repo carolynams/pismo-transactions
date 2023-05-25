@@ -16,13 +16,13 @@ import java.time.ZonedDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class TransactionData {
 
+    @Id
     @Column(name = "transaction_id")
     @EqualsAndHashCode.Include
     private String id;
 
-    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
-    @OneToMany(fetch = FetchType.LAZY)
     private AccountData account;
 
     @Column(name = "operation_type_id")

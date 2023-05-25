@@ -2,10 +2,8 @@ package io.pismo.transactions.interfaces.adapter.gateway.database;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,4 +21,7 @@ public class AccountData {
 
     @Column(name = "document_number")
     private Integer documentNumber;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<TransactionData> transactions;
 }
