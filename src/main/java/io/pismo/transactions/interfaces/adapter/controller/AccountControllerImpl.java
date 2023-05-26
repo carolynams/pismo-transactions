@@ -27,7 +27,7 @@ public class AccountControllerImpl implements AccountController {
         final var account = CreateAccountConverter.toModel(createAccountRequest);
         return this.createAccountInputPort.execute(requestId, account)
                 .map(response -> CreateAccountResponse.builder()
-                        .accountId(response.getAccountId())
+                        .accountId(response.getId().toString())
                         .build());
     }
 

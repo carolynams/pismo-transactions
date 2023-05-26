@@ -1,26 +1,25 @@
 package io.pismo.transactions.interfaces.adapter.gateway.database;
 
 import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-import java.util.List;
 
 @Data
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TypeAlias("accounts")
+@Document(collection = "accounts")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class AccountData {
 
     @Id
-    @Column(name = "id")
     @EqualsAndHashCode.Include
-    private String id;
+    private ObjectId id;
 
-    @Column(name = "document_number")
     private Integer documentNumber;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    private List<TransactionData> transactions;
 }

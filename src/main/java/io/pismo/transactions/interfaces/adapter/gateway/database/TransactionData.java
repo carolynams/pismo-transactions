@@ -1,34 +1,28 @@
 package io.pismo.transactions.interfaces.adapter.gateway.database;
 
 import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
-
 @Data
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TypeAlias("transactions")
+@Document(collection = "transactions")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class TransactionData {
 
     @Id
-    @Column(name = "id")
     @EqualsAndHashCode.Include
-    private String id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id")
-    private AccountData account;
-
-    @Column(name = "operation_type_id")
+    private ObjectId id;
+    private String accountId;
     private Integer operationType;
-
     private BigDecimal amount;
-
-    @Column(name = "event_date")
     private ZonedDateTime eventDate;
 }
