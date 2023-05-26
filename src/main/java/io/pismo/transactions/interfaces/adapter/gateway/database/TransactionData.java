@@ -12,12 +12,11 @@ import java.time.ZonedDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "transactions")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class TransactionData {
 
     @Id
-    @Column(name = "transaction_id")
+    @Column(name = "id")
     @EqualsAndHashCode.Include
     private String id;
 

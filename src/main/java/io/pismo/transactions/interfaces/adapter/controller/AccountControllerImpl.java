@@ -18,8 +18,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/accounts")
 public class AccountControllerImpl implements AccountController {
 
-    private CreateAccountInputPort createAccountInputPort;
-    private FindAccountInputPort findAccountInputPort;
+    private final CreateAccountInputPort createAccountInputPort;
+    private final FindAccountInputPort findAccountInputPort;
 
     @Override
     public Mono<CreateAccountResponse> createAccount(final String requestId, final CreateAccountRequest createAccountRequest) {

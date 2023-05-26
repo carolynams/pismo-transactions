@@ -5,7 +5,7 @@ import io.pismo.transactions.interfaces.adapter.gateway.database.AccountData;
 
 public class AccountDataConverter {
 
-    public AccountData toDomain(final Account account) {
+    public static AccountData toDomain(final Account account) {
         return AccountData.builder()
                 .documentNumber(account.getDocumentNumber())
                 .build();

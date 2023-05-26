@@ -10,12 +10,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "accounts")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class AccountData {
 
     @Id
-    @Column(name = "account_id")
+    @Column(name = "id")
     @EqualsAndHashCode.Include
     private String id;
 
