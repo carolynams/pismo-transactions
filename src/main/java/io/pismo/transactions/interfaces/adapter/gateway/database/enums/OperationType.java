@@ -20,6 +20,6 @@ public enum OperationType {
         return Arrays.stream(values())
                 .filter(value -> value.getId().equals(type))
                 .findFirst()
-                .orElseThrow(null);
+                .orElse(null);
     }
 }
