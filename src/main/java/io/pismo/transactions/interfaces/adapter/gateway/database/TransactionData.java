@@ -7,7 +7,7 @@ import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -24,5 +24,5 @@ public class TransactionData {
     private String accountId;
     private Integer operationType;
     private BigDecimal amount;
-    private ZonedDateTime eventDate;
+    private LocalDateTime eventDate;
 }

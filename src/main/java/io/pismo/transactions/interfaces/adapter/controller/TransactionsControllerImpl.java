@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class TransactionsControllerImpl implements TransactionController {
 
-    private CreateTransactionInputPort createTransactionInputPort;
+    private final CreateTransactionInputPort createTransactionInputPort;
 
     @Override
     public Mono<TransactionResponse> createTransaction(final String requestId, final TransactionRequest transactionRequest) {
@@ -24,7 +24,7 @@ public class TransactionsControllerImpl implements TransactionController {
         final var transaction = CreateTransactionConverter.toModel(transactionRequest);
         return this.createTransactionInputPort.execute(requestId, transaction)
                 .map(response -> TransactionResponse.builder()
-                        .transactionId(response.getTransactionId())
+                        .transactionId(response.getId().toString())
                         .build());
     }
 }

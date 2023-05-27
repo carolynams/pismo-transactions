@@ -3,7 +3,6 @@ package io.pismo.transactions.entity;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 
@@ -16,9 +15,7 @@ public class Transaction {
 
     @EqualsAndHashCode.Include
     private UUID id;
-
-    private UUID accountId;
+    private String accountId;
     private Integer operationType;
     private BigDecimal amount;
-    private ZonedDateTime eventDate;
 }
