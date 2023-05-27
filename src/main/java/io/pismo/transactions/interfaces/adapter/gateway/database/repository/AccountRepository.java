@@ -5,9 +5,11 @@ import reactor.core.publisher.Mono;
 
 public interface AccountRepository {
 
-    <T extends AccountData> Mono<T> insert(final AccountData accountData);
+    <T extends AccountData> Mono<T> save(final AccountData accountData);
 
 
-    Mono<Boolean> existsAccountByDocumentNumber(final Integer documentNumber);
+    Mono<Boolean> existsAccountByDocumentNumber(final String documentNumber);
+
+    Mono<AccountData> findById(final String id);
 
 }

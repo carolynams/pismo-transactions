@@ -1,7 +1,8 @@
 package io.pismo.transactions.usecases.interactors;
 
-import io.pismo.transactions.interfaces.adapter.controller.model.account.findaccount.FindAccountResponse;
+import io.pismo.transactions.interfaces.adapter.gateway.database.AccountData;
 import io.pismo.transactions.interfaces.adapter.gateway.database.repository.AccountRepository;
+import io.pismo.transactions.usecases.exceptions.AccountNotFoundException;
 import io.pismo.transactions.usecases.ports.FindAccountInputPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,9 @@ public class FindAccountInteractor implements FindAccountInputPort {
     private final AccountRepository repository;
 
     @Override
-    public Mono<FindAccountResponse> execute(String requestId, String accountId) {
-        return null;
+    public Mono<AccountData> execute(String requestId, String accountId) {
+        log.info("[{}] Finding account.", requestId);
+        return this.repository.findById(accountId)
+                .switchIfEmpty(Mono.error(new AccountNotFoundException()));
     }
 }

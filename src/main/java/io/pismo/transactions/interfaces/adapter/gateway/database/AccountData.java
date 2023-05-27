@@ -20,6 +20,6 @@ public class AccountData {
     @EqualsAndHashCode.Include
     private ObjectId id;
 
-    private Integer documentNumber;
+    private String documentNumber;
 
 }

@@ -25,6 +25,6 @@ public class CreateAccountInteractor implements CreateAccountInputPort {
                 .filter(exists -> !exists)
                 .switchIfEmpty(Mono.error(new RepeatedAccountException()))
                 .map(response -> AccountDataConverter.toDomain(account))
-                .flatMap(this.repository::insert);
+                .flatMap(this.repository::save);
     }
 }

@@ -14,5 +14,5 @@ public class Account {
     @EqualsAndHashCode.Include
     private UUID id;
 
-    private Integer documentNumber;
+    private String documentNumber;
 }

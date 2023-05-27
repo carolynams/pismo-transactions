@@ -36,7 +36,7 @@ public class AccountControllerImpl implements AccountController {
         log.info("[{}] Request received.", requestId);
         return this.findAccountInputPort.execute(requestId, accountId)
                 .map(response -> FindAccountResponse.builder()
-                        .accountId(response.getAccountId())
+                        .accountId(response.getId().toString())
                         .documentNumber(response.getDocumentNumber())
                         .build());
     }

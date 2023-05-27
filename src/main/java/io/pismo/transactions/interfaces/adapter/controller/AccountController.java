@@ -4,10 +4,11 @@ import io.pismo.transactions.interfaces.adapter.controller.model.account.createa
 import io.pismo.transactions.interfaces.adapter.controller.model.account.createaccount.CreateAccountResponse;
 import io.pismo.transactions.interfaces.adapter.controller.model.account.findaccount.FindAccountResponse;
 import io.pismo.transactions.interfaces.adapter.controller.model.transaction.TransactionResponse;
+import io.pismo.transactions.usecases.exceptions.AccountNotFoundException;
+import io.pismo.transactions.usecases.exceptions.RepeatedAccountException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -27,10 +28,8 @@ public interface AccountController {
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionResponse.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
-                    @ApiResponse(responseCode = "404", description = "Not found.",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
                     @ApiResponse(responseCode = "422", description = "Unprocessable Entity.",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = RepeatedAccountException.class))),
                     @ApiResponse(responseCode = "500", description = "Internal Server Error.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class)))
             })
@@ -46,7 +45,7 @@ public interface AccountController {
                     @ApiResponse(responseCode = "400", description = "Bad request.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
                     @ApiResponse(responseCode = "404", description = "Not found.",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = AccountNotFoundException.class))),
                     @ApiResponse(responseCode = "500", description = "Internal Server Error.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class)))
             })

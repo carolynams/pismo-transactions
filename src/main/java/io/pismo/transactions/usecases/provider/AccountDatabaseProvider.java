@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public interface AccountDatabaseProvider extends AccountRepository, ReactiveMongoRepository<AccountData, String> {
 
     @Override
-    default Mono<Boolean> existsAccountByDocumentNumber(final Integer documentNumber) {
+    default Mono<Boolean> existsAccountByDocumentNumber(final String documentNumber) {
         final var example = Example.of(AccountData.builder().documentNumber(documentNumber).build());
         return this.exists(example);
     }
