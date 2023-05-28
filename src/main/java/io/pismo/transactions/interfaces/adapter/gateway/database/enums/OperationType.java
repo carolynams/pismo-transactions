@@ -14,11 +14,11 @@ public enum OperationType {
     SAQUE(3),
     PAGAMENTO(4);
 
-    private final Integer id;
+    private final Integer value;
 
     public static OperationType getOperationType(final Integer type) {
         return Arrays.stream(values())
-                .filter(value -> value.getId().equals(type))
+                .filter(value -> value.getValue().equals(type))
                 .findFirst()
                 .orElse(null);
     }

@@ -5,6 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/
+target
 
 ### VS Code ###
 .vscode/
