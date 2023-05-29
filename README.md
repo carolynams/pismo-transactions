@@ -66,7 +66,9 @@ valor transacionado é negativado, pois são transações de saída.
 3. Executando o container
 
 ```bash
-  sudo docker run -i transaction-routine
+  sudo docker run transaction-routine
 ```
 
 4. Após a execução do comando a cima, o programa já estará rodando.
+5. Acessar o swagger pela
+   url: http://localhost:8080/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/
