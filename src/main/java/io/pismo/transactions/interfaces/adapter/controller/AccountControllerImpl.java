@@ -38,6 +38,7 @@ public class AccountControllerImpl implements AccountController {
                 .map(response -> FindAccountResponse.builder()
                         .accountId(response.getId().toString())
                         .documentNumber(response.getDocumentNumber())
+                        .availableCreditLimit(response.getAvailableCreditLimit())
                         .build());
     }
 }

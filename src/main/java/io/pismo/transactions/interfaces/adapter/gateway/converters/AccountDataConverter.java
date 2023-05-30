@@ -8,6 +8,7 @@ public class AccountDataConverter {
     public static AccountData toDomain(final Account account) {
         return AccountData.builder()
                 .documentNumber(account.getDocumentNumber())
+                .availableCreditLimit(account.getAvailableCreditLimit())
                 .build();
     }
 }

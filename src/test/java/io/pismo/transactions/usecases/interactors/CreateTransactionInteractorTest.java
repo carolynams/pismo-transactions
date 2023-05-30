@@ -16,6 +16,8 @@ import reactor.test.StepVerifier;
 
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -39,11 +41,15 @@ public class CreateTransactionInteractorTest {
         final var transaction = TransactionFixture.createTransaction();
         final var accountData = AccountDataFixture.createAccountData();
         when(this.accountRepository.findById(any())).thenReturn(Mono.just(accountData));
+        when(this.accountRepository.save(any())).thenReturn(Mono.just(accountData));
         when(this.transactionRepository.insert(any())).thenReturn(Mono.just(transactionData));
 
         final var result = this.interactor.execute(REQUEST_ID, transaction);
         StepVerifier.create(result)
-                .expectNext(transactionData)
+                .assertNext(response -> {
+                    assertNotNull(response);
+                    assertEquals(transactionData.getAccountId(), response.getAccountId());
+                })
                 .verifyComplete();
     }
 

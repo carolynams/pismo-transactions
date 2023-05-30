@@ -8,6 +8,7 @@ public class CreateAccountConverter {
     public static Account toModel(final CreateAccountRequest account) {
         return Account.builder()
                 .documentNumber(account.getDocumentNumber())
+                .availableCreditLimit(account.getAvailableCreditLimit())
                 .build();
     }
 }

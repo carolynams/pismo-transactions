@@ -3,7 +3,6 @@ package io.pismo.transactions.interfaces.adapter.controller;
 import io.pismo.transactions.interfaces.adapter.controller.model.account.createaccount.CreateAccountRequest;
 import io.pismo.transactions.interfaces.adapter.controller.model.account.createaccount.CreateAccountResponse;
 import io.pismo.transactions.interfaces.adapter.controller.model.account.findaccount.FindAccountResponse;
-import io.pismo.transactions.interfaces.adapter.controller.model.transaction.TransactionResponse;
 import io.pismo.transactions.usecases.exceptions.AccountNotFoundException;
 import io.pismo.transactions.usecases.exceptions.RepeatedAccountException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +24,7 @@ public interface AccountController {
     @Operation(summary = "Create account.", description = "This endpoint provides a way to create a account.",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Created account.",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionResponse.class))),
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CreateAccountResponse.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
                     @ApiResponse(responseCode = "422", description = "Unprocessable Entity.",
@@ -41,7 +40,7 @@ public interface AccountController {
     @Operation(summary = "Get account.", description = "This endpoint provides a way to get a account.",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Created account.",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionResponse.class))),
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = FindAccountResponse.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request.",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Exception.class))),
                     @ApiResponse(responseCode = "404", description = "Not found.",

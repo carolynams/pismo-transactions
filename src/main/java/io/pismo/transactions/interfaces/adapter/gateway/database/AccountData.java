@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+
 
 @Data
 @Builder
@@ -21,5 +23,7 @@ public class AccountData {
     private ObjectId id;
 
     private String documentNumber;
+
+    private BigDecimal availableCreditLimit;
 
 }
